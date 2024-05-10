@@ -15,7 +15,7 @@ function Banner() {
                         Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolar,et totam.Tempora amet atque expedita,quae corrupta totam sed pariatur at veniam est voluptas amini!
                     </p>
                     <br />
-                    <div>
+                    <div className='dark:text-black'>
                     <label className="input input-bordered flex items-center gap-2">
                         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" fill="currentColor" className="w-4 h-4 opacity-70">
                             <path d="M2.5 3A1.5 1.5 0 0 0 1 4.5v.793c.026.009.051.02.076.032L7.674 8.51c.206.1.446.1.652 0l6.598-3.185A.755.755 0 0 1 15 5.293V4.5A1.5 1.5 0 0 0 13.5 3h-11Z" />
@@ -24,7 +24,7 @@ function Banner() {
                         <input type="text" className="grow" placeholder="Email" />
                         </label>
                         <div>
-                        <a><button className="btn mt-5 btn-secondary">Secondary</button></a>
+                        <a><button className="btn mt-5 btn-secondary">Get Started</button></a>
                         </div>
                     </div>
                 </div>

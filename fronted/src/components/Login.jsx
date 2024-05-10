@@ -1,6 +1,10 @@
-import React, { useEffect } from 'react'
+import React, { useContext, useEffect } from 'react'
 import { Link } from 'react-router-dom'
 import { useForm } from "react-hook-form"
+import axois from "axios";
+import toast from 'react-hot-toast';
+import { useNavigate } from 'react-router-dom';
+import { AuthContext } from '../context/AuthProvider';
 
 function Login({ isLoginModalOpen, setIsLoginModalOpen }) {
     const {
@@ -9,13 +13,46 @@ function Login({ isLoginModalOpen, setIsLoginModalOpen }) {
         formState: { errors },
     } = useForm();
 
+    const [authUsers, setAuthUser] = useContext(AuthContext);
+
+    const navigate = useNavigate();
     // useEffect(() => {
     //   console.log(errors);
     
     // }, [errors]);
     
 
-    const onSubmit = (data) => console.log(data)
+    const onSubmit =async (data) => {
+        const userInfo = {
+            
+            email: data.email,
+            password: data.password
+          }
+
+          await axois
+          .post("http://localhost:6700/user/login", userInfo)
+            .then((res) => {
+              console.log(res.data)
+              if (res.data) {
+                
+                toast.success('Login Successfully !');
+                
+                
+              }
+              localStorage.setItem("Users",JSON.stringify(res.data.user));
+              window.location.reload();
+
+              setAuthUser(res.data.user)
+              navigate('/course')
+            }).catch((err) => {
+              if(err.response){
+                console.log(err)
+                toast
+                toast.error("Error: "+ err.response.data.message);
+              }
+            })
+    }
+
     return (
         <>
             <div>

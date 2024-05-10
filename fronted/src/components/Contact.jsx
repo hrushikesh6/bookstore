@@ -24,8 +24,8 @@ function Contact() {
 
                     <div className='mt-4  space-y-2'>
 
-                        <div className='modal-box'>
-
+                        <div className='modal-box dark:text-black'>
+ 
                             <form onSubmit={handleSubmit(onSubmit)} method="dialog">
                                 {/* if there is a button in form, it will close the modal */}
                                 <Link
@@ -34,7 +34,7 @@ function Contact() {
                                     ✕</Link >
                                 <input type="text"
                                     placeholder='Enter your name'
-                                    className='w-80 px-3 border rounded-md outline-none'
+                                    className='w-80 px-3 border rounded-md outline-none dark:text-black'
                                     {...register("password", { required: true, meassage: "password is required" })}
                                 />
                                 <br />
@@ -46,7 +46,7 @@ function Contact() {
                                 <div>
                                     <input type="text"
                                         placeholder='Enter your email'
-                                        className='w-80 px-3 border rounded-md outline-none'
+                                        className='w-80 px-3 border rounded-md outline-none dark:text-black'
                                         {...register("email", { required: { value: true, message: "email is required" } })}
 
                                     />
@@ -61,7 +61,7 @@ function Contact() {
                                 <div>
                                     <input type="text"
                                         placeholder='Type messages'
-                                        className='w-80 px-3 border rounded-md outline-none px-8 py-6'
+                                        className='w-80 px-3 border rounded-md outline-none py-6 dark:text-black'
                                         {...register("messsage", { required: true, meassage: "message is required" })}
                                     />
                                     <br />

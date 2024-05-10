@@ -1,8 +1,12 @@
-import React, { useEffect } from 'react';
+import React, { useContext, useEffect } from 'react';
 import { useState } from "react";
 import Login from './Login';
+import Logout from './Logout';
+import { AuthContext } from '../context/AuthProvider';
 
 function Navbar() {
+    const [authUser, setAuthUser] = useContext(AuthContext);
+
 
     const [isLoginModalOpen, setIsLoginModalOpen] = useState(false);
 
@@ -36,20 +40,20 @@ function Navbar() {
     }, [])
 
     const navItems = (<>
-        <li>
+        <li className='dark:text-black' >
             <a href="/">Home</a>
         </li>
-        <li>
+        <li className='dark:text-black'>
             <a href="/course">Course</a>
         </li>
-        <li>
+        <li className='dark:text-black'>
             <a href='/contact'>Contact</a>
         </li>
-        <li>
+        <li className='dark:text-black'>
             <a>About</a>
         </li>
     </>);
-    
+
     return (<>
         <div className={' max-w-screen-2xl container mx-auto md:px-20 px-4 dark:bg-slate-900 dark:text-white fixed top-0 left-0 right-0 z-50 ${sticky? "sticky-navbar shadow-md bg-base-200 duration-300 dark:bg-slate-600 dark:text-white transition-all ease-in-out":""}'}>
             <div className="navbar">
@@ -72,16 +76,16 @@ function Navbar() {
                     </div>
                     <div className="hidden md:block">
                         <label className="px-3 py-2 flex items-center gap-2">
-                            <input 
-                            type="text" 
-                            
-                            className="grow outline-none dark:bg-slate-900 dark:text-white" 
-                            placeholder="Search" />
-                            
-                            <svg xmlns="http://www.w3.org/2000/svg" 
-                            viewBox="0 0 16 16" 
-                            fill="currentColor" 
-                            className="w-4 h-4 opacity-70">
+                            <input
+                                type="text"
+
+                                className="grow outline-none dark:bg-slate-900 dark:text-white"
+                                placeholder="Search" />
+
+                            <svg xmlns="http://www.w3.org/2000/svg"
+                                viewBox="0 0 16 16"
+                                fill="currentColor"
+                                className="w-4 h-4 opacity-70">
                                 <path fillRule="evenodd" d="M9.965 11.026a5 5 0 1 1 1.06-1.06l2.755 2.754a.75.75 0 1 1-1.06 1.06l-2.755-2.754ZM10.5 7a3.5 3.5 0 1 1-7 0 3.5 3.5 0 0 1 7 0Z" clipRule="evenodd" />
                             </svg>
                         </label>
@@ -109,15 +113,23 @@ function Navbar() {
                             </svg>
                         </label>
                     </div>
+
+
                     <div className="">
-                        <a className="bg-black text-white px-3 py-2 rounded-md hover:bg-slate-800 duration-300 cursor-pointer"
-                         onClick={()=>setIsLoginModalOpen(true)}
-                         >
-                            Login
+                        {authUser ?
+                            <Logout /> :
+                            <a className="bg-black text-white px-3 py-2 rounded-md hover:bg-slate-800 duration-300 cursor-pointer"
+                                onClick={() => setIsLoginModalOpen(true)}
+                            >
+                                Login
                             </a>
-                            <Login isLoginModalOpen={isLoginModalOpen} setIsLoginModalOpen={setIsLoginModalOpen} />
+                        }
+                        <Login isLoginModalOpen={isLoginModalOpen} setIsLoginModalOpen={setIsLoginModalOpen} />
                     </div>
+
+
                 </div>
+
             </div>
         </div>
     </>
