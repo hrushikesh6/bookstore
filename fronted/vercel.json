@@ -2,11 +2,11 @@
     "rewrites": [
       {
         "source": "/book/(.*)",
-        "destination": "https://pillai-buzz-goo4.vercel.app/api/$1"
+        "destination": "https://bookstore-backend-woad-theta.vercel.app/book/$1"
       },
       {
         "source": "/user/(.*)",
-        "destination": "https://pillai-buzz-goo4.vercel.app/api/$1"
+        "destination": "https://bookstore-backend-woad-theta.vercel.app/user/$1"
       },
       {
         "source": "/(.*)",
