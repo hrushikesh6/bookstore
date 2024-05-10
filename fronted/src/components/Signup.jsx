@@ -24,7 +24,7 @@ function Signup() {
       email: data.email,
       password: data.password
     }
-    await axois.post("http://localhost:6700/user/signup", userInfo)
+    await axois.post("/user/signup", userInfo)
       .then((res) => {
         console.log(res.data)
         if (res.data) {

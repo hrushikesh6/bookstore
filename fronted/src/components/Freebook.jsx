@@ -10,10 +10,10 @@ function Freebook() {
   const [list, setList] = useState([])
 
   useEffect(() => {
-    axios.get('http://localhost:6700/book')
+    axios.get('/book/freebooks')
       .then(res => {
         console.log(res.data);
-        setList(res.data.books);
+        setList(res.data);
       })
       .catch(err => {
         console.log(err);
